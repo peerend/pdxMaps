@@ -4,7 +4,35 @@
     var view = new ol.View({
         center: ol.proj.fromLonLat([37.41, 8.82]),
         zoom: 4
-    })
+    });
+
+
+    //Add custom slider for layers
+    //function slider() {
+    //    yearMap = ['1996', '1998', '2000', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'];
+    //    var handle = $("#custom-handle");
+    //    $("#slider").slider({
+    //        create: function () {
+    //            //handle.text($('#nlval').value);
+    //            max: yearMap.length - 1;
+    //        },
+    //        value: yearMap[0].selectedIndex + 1,
+    //        slide: function (event, ui) {
+    //            yearMap[0].selectedIndex = ui.value - 1;
+    //        }
+    //    });
+    //}
+
+    //$(function () {
+    //    var years = $('#mapYears').val().split(',');
+    //    $('#yearSlider').slider({
+    //        create: function () {
+    //            max: years.length - 1;
+    //        },
+    //        value: years
+    //    });
+    //});
+    //$('#yearSlider').slider('values', 1996, 1998, 2000, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015);
 
     //initialize the map
     var attribution = new ol.Attribution({
@@ -17,7 +45,9 @@
         layers: []
     });
 
+
     var esrijsonFormat = new ol.format.EsriJSON();
+
 
     //eventually make the layers configged values
     var map = new ol.Map({
@@ -163,6 +193,13 @@
 
     navigator.geolocation.getCurrentPosition(success, error, options);
     //end map center
+
+    //slider events
+    var yearSlider = $('#yearSlider');
+    yearSlider.on('click', function (e) {
+        debugger;
+        e.preventDefault();
+    })
 
 });
 

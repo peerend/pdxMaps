@@ -50,3 +50,4 @@ C:\Users\dylan\webDev\pdxMaps\pdxMaps\bin\System.Web.Http.xml
 C:\Users\dylan\webDev\pdxMaps\pdxMaps\bin\System.Web.Http.WebHost.xml
 C:\Users\dylan\webDev\pdxMaps\pdxMaps\obj\Debug\pdxMaps.dll
 C:\Users\dylan\webDev\pdxMaps\pdxMaps\obj\Debug\pdxMaps.pdb
+C:\Users\dylan\webDev\pdxMaps\pdxMaps\obj\Debug\pdxMaps.csprojResolveAssemblyReference.cache

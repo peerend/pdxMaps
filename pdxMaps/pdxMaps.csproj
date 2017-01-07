@@ -134,8 +134,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-slider.css" />
+    <Content Include="Scripts\libraries\bootstrap-slider.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\ol.css" />
     <Content Include="Content\ol3-layerswitcher.css" />
     <Content Include="Content\Site.css" />
@@ -146,10 +149,12 @@
     <Content Include="Scripts\libraries\bootstrap.js" />
     <Content Include="Scripts\libraries\bootstrap.min.js" />
     <Content Include="Scripts\libraries\Enums.js" />
+    <Content Include="package.json" />
     <None Include="Scripts\libraries\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\libraries\jquery-1.10.2.js" />
     <Content Include="Scripts\libraries\jquery-1.10.2.min.js" />
     <None Include="Scripts\libraries\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\libraries\jquery-ui.min.js" />
     <Content Include="Scripts\libraries\jquery.validate.js" />
     <Content Include="Scripts\libraries\jquery.validate.min.js" />
     <Content Include="Scripts\libraries\jquery.validate.unobtrusive.js" />

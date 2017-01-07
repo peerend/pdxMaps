@@ -9,7 +9,9 @@ namespace pdxMaps
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/libraries/jquery-{version}.js"));
+                        "~/Scripts/libraries/jquery-{version}.js"
+                        //"~/Scripts/libraries/jquery-ui.min.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/libraries/jquery.validate*"));
@@ -19,10 +21,6 @@ namespace pdxMaps
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/libraries/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/libraries/bootstrap.js",
-                      "~/Scripts/libraries/respond.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/map").Include(
                 "~/Scripts/map-home.js",
                 "~/Scripts/ol3/ol.js",
@@ -30,9 +28,17 @@ namespace pdxMaps
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/Site.css",
                       "~/Content/ol.css",
+                      "~/Content/bootstrap-slider.css",
+                      //"~/Scripts/libraries/jquery-ui.css",
+                      //"~/Content/jquery-ui.min.css",
                       "~/Content/ol3-layerswitcher.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/libraries/bootstrap.js",
+                      "~/Scripts/libraries/bootstrap-slider.js",
+                      "~/Scripts/libraries/respond.js"));
         }
     }
 }

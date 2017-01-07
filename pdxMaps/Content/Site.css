@@ -51,6 +51,24 @@ footer {
 }
 
 .map{
-    height: auto;
+    height: 100%;
     width: 100%;
 }
+
+#custom-handle {
+    width: 3em;
+    height: 2em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+.slider-container{
+    width: 90%;
+    height: 10px;
+    align-content:center;
+    position: absolute;
+    z-index: 1;
+    bottom: 15%;
+}
+
