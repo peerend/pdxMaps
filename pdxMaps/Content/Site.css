@@ -64,11 +64,13 @@ footer {
     line-height: 1.6em;
 }
 .slider-container{
-    width: 90%;
+    width: 100%;
     height: 10px;
     align-content:center;
     position: absolute;
     z-index: 1;
     bottom: 15%;
 }
-
+.slider-horizontal{
+    justify-content:center;
+}

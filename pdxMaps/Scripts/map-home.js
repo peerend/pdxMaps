@@ -6,34 +6,6 @@
         zoom: 4
     });
 
-
-    //Add custom slider for layers
-    //function slider() {
-    //    yearMap = ['1996', '1998', '2000', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'];
-    //    var handle = $("#custom-handle");
-    //    $("#slider").slider({
-    //        create: function () {
-    //            //handle.text($('#nlval').value);
-    //            max: yearMap.length - 1;
-    //        },
-    //        value: yearMap[0].selectedIndex + 1,
-    //        slide: function (event, ui) {
-    //            yearMap[0].selectedIndex = ui.value - 1;
-    //        }
-    //    });
-    //}
-
-    //$(function () {
-    //    var years = $('#mapYears').val().split(',');
-    //    $('#yearSlider').slider({
-    //        create: function () {
-    //            max: years.length - 1;
-    //        },
-    //        value: years
-    //    });
-    //});
-    //$('#yearSlider').slider('values', 1996, 1998, 2000, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015);
-
     //initialize the map
     var attribution = new ol.Attribution({
         html: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
@@ -41,13 +13,11 @@
     });
 
     var overlayGroup = new ol.layer.Group({
-        title: 'Overlays',
+        title: 'aerialPhotos',
         layers: []
     });
 
-
     var esrijsonFormat = new ol.format.EsriJSON();
-
 
     //eventually make the layers configged values
     var map = new ol.Map({
@@ -72,13 +42,9 @@
         view: view
     });
 
-    //create a layerswitcher and add it to the map
-    var layerSwitcher = new ol.control.LayerSwitcher();
-    map.addControl(layerSwitcher);
-
     //add layer (eventually want this to be database driven
     //need to figure out a good way to store params
-    var params = { 'LAYERS': 'ne:ne_10m_admin_1_states_provinces_lines_shp' };
+    //var params = { 'LAYERS': 'ne:ne_10m_admin_1_states_provinces_lines_shp' };
     //addWMSLayer('Counties', 'http://demo.opengeo.org/geoserver/wms', params, 'geoserver');
     //addESRIFeatureLayer('https://www.portlandmaps.com/arcgis/rest/services/Public/TaxParcel_Dimensions/MapServer', 'ESRI TITLE HERE');
     addXYZLayer('1996', attribution, 'https://www.portlandmaps.com/arcgis/rest/services/Public/Aerial_Photos_Summer_1996/MapServer');
@@ -181,12 +147,11 @@
 
     function success(pos) {
         var crd = pos.coords;
-        var map = $('#map').data('map');
+        //var map = $('#map').data('map');
         map.getView().setCenter(ol.proj.transform([crd.longitude, crd.latitude], 'EPSG:4326', 'EPSG:3857'));
         map.getView().setZoom(14);
         console.log('More or less ' + crd.accuracy + ' meters.');
     };
-
     function error(err) {
         console.warn('ERROR(' + err.code + '): ' + err.message);
     };
@@ -195,11 +160,28 @@
     //end map center
 
     //slider events
+
     var yearSlider = $('#yearSlider');
-    yearSlider.on('click', function (e) {
-        debugger;
-        e.preventDefault();
-    })
+    yearSlider.on('change', function (e) {
+        if (e.value.oldValue != e.value.newValue) {
+            var map = $('#map').data('map');
+            debugger;
+            map.getLayers().forEach(function (layer, i) {
+                if (layer instanceof ol.layer.Group) {
+                    if (layer.get('title') == 'aerialPhotos') {
+                        layer.getLayers().forEach(function (sublayer, j) {
+                            if (parseInt(sublayer.get('title')) == e.value.newValue) {
+                                sublayer.setVisible(true);
+                            } else {
+                                sublayer.setVisible(false);
+                            }
+
+                        });
+                    }
+                }
+            });
+        }
+    });
 
 });
 
